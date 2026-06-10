@@ -128,3 +128,11 @@
     @apply font-sans;
   }
 }
+
+* {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.loginAndRegisterFields {
+  @apply flex flex-col gap-y-1
+}
