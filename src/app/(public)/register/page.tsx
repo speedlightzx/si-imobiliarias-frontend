@@ -23,11 +23,11 @@ export default function LoginPage() {
           </CardHeader>
           <CardContent className="flex flex-col items-center">
             <form id="loginForm" method="post" className="flex flex-col gap-y-5">
-              <div className="loginAndRegisterFields">
+              <div className="form">
                 <Label className="place-self-center">Email:</Label>
                 <Input required type="email" placeholder="email@gmail.com"/>
               </div>
-              <div className="loginAndRegisterFields">
+              <div className="form">
                 <Label className="place-self-center">Senha:</Label>
                 <Input required type="password" placeholder="Insira sua senha"/>
               </div>
