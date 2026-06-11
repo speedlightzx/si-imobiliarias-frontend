@@ -18,7 +18,7 @@ export default function LoginPage() {
             <CardTitle>Fazer cadastro</CardTitle>
             <CardDescription>Seja bem-vindo! Crie sua conta e acesse!</CardDescription>
             <CardAction>
-              <Button onClick={() => router.push('/')} variant={"link"}>Cadastrar-se</Button>
+              <Button onClick={() => router.push('/')} variant={"link"}>Fazer login</Button>
             </CardAction>
           </CardHeader>
           <CardContent className="flex flex-col items-center">

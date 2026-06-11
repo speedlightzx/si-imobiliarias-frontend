@@ -1,4 +1,4 @@
-import { iLead } from "../../types/iLead";
+import { iLead } from "../types/iLead";
 import LeadOptions from "./LeadOptions";
 import { Badge } from "./ui/badge";
 

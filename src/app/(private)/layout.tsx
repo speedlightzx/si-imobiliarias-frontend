@@ -5,6 +5,8 @@ import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar";
+import FloatingChat from "@/components/FloatingChat";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
@@ -23,7 +25,10 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <SidebarProvider>
           <AppSidebar />
-          {children}
+          <TooltipProvider>
+            <FloatingChat />
+            {children}
+          </TooltipProvider>
           <Toaster />
         </SidebarProvider>
       </body>

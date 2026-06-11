@@ -1,6 +1,6 @@
 import { ChevronsDownUp, Ellipsis } from "lucide-react";
-import { iList } from "../../types/iList";
-import { iLead } from "../../types/iLead";
+import { iList } from "../types/iList";
+import { iLead } from "../types/iLead";
 import Lead from "./Lead";
 import React, { useState } from "react";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";

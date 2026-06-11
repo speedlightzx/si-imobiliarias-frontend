@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { Dialog, DialogClose, DialogContent, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "./ui/dialog";
 import { Label } from "./ui/label";
 import { Input } from "./ui/input";
-import { iList } from "../../types/iList";
+import { iList } from "../types/iList";
 import { Button } from "./ui/button";
 
 export default function EditList({ id, name, color,  children }: iList & { children: ReactNode }) {

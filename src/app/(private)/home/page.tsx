@@ -2,7 +2,7 @@
 
 import List from "@/components/List"
 import { useState } from "react"
-import { iList } from "../../../../types/iList"
+import { iList } from "../../../types/iList"
 import AddNewList from "@/components/AddNewList"
 
 export default function Home() {
