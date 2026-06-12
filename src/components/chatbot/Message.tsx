@@ -1,4 +1,4 @@
-import { iMessage } from "../types/iMessage";
+import { iMessage } from "../../types/iMessage";
 
 export default function Message({ author, content }: iMessage ) {
     return (

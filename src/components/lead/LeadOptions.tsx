@@ -1,18 +1,22 @@
 import { EllipsisVertical } from "lucide-react"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "./ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from "../ui/dropdown-menu"
 import EditLead from "./EditLead"
 import ConfirmLeadDelete from "./ConfirmLeadDelete"
+import { Dispatch, SetStateAction } from "react"
+import { iList } from "@/types/iList"
 
 export default function LeadOptions(
     { 
         id, 
         name, 
-        status 
+        status,
+        setLists
     }: 
     {
         id:number,
         name:string,
-        status:string
+        status:string,
+        setLists: Dispatch<SetStateAction<iList[]>>
     }
 ) {
     return (
@@ -23,10 +27,10 @@ export default function LeadOptions(
         <DropdownMenuContent align="start">
             <DropdownMenuGroup>
                 <DropdownMenuLabel>Opções</DropdownMenuLabel>
-                <EditLead id={id} name={name} status={status}>
+                <EditLead setLists={setLists} id={id} name={name} status={status}>
                     <DropdownMenuItem onSelect={(e) => e.preventDefault()}>Editar</DropdownMenuItem>
                 </EditLead>
-                <ConfirmLeadDelete id={id}>
+                <ConfirmLeadDelete setLists={setLists} id={id}>
                     <DropdownMenuItem onSelect={(e) => e.preventDefault()}>Apagar</DropdownMenuItem>
                 </ConfirmLeadDelete>
             </DropdownMenuGroup>

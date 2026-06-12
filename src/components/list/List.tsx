@@ -1,10 +1,11 @@
-import { ChevronsDownUp, Ellipsis } from "lucide-react";
-import { iList } from "../types/iList";
-import { iLead } from "../types/iLead";
-import Lead from "./Lead";
-import React, { useState } from "react";
-import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "./ui/collapsible";
+import { ChevronsDownUp, Ellipsis, Plus } from "lucide-react";
+import { iList } from "../../types/iList";
+import { iLead } from "../../types/iLead";
+import Lead from "../lead/Lead";
+import React, { Dispatch, SetStateAction, useState } from "react";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
 import ListOptions from "./ListOptions";
+import ListAddLead from "./ListAddLead";
 
 export default function List(
     { 
@@ -12,10 +13,14 @@ export default function List(
         leads, 
         name, 
         id, 
-        moveLeadToOtherList 
+        moveLeadToOtherList,
+        setLists
     }: 
     iList & 
-    { moveLeadToOtherList: (leadId:number, previousListId:number, newList:number) => void }
+    { 
+        moveLeadToOtherList: (leadId:number, previousListId:number, newList:number) => void,
+        setLists: Dispatch<SetStateAction<iList[]>>
+    }
 ) {
     
     const transferLead = async(e: React.DragEvent) => {
@@ -29,21 +34,24 @@ export default function List(
     }
 
     const [isOpen, setIsOpen] = useState<boolean>(true)
-    
+    console.log(color)
     return (
         <Collapsible
         open={isOpen}
         onOpenChange={setIsOpen}
         onDragOver={(e) => e.preventDefault()}
         onDrop={(e) => transferLead(e)}
-        className={`rounded-lg ${color ? `bg-[#${color}]` : 'bg-gray-400'} p-3 w-60 shadow-sm flex flex-col gap-y-5`}>
+        style={{ background: color || '#9CA3AF' }}
+        className={`rounded-lg ${color ? `bg-[${color}]` : 'bg-gray-400'} p-3 w-60 shadow-sm flex flex-col gap-y-5`}>
             <div className="flex justify-between ">
                 <h1 className="text-sm text-white font-bold">{name}</h1>
                 <div className="flex gap-x-1 items-center">
+                    <ListAddLead setLists={setLists} listId={id}/>
                     <CollapsibleTrigger>
-                        <ChevronsDownUp className="cursor-pointer" size={16}/>
+                        <ChevronsDownUp color="white" className="cursor-pointer" size={16}/>
                     </CollapsibleTrigger>
-                    <ListOptions 
+                    <ListOptions
+                    setLists={setLists}
                     color={color}
                     id={id}
                     name={name}
@@ -51,8 +59,8 @@ export default function List(
                 </div>
             </div>
             <CollapsibleContent className="flex flex-col gap-y-3">
-                {leads?.map((l:iLead) => (
-                    <Lead key={l.id} listId={id} id={l.id} name={l.name} status={l.status}/>
+                {Array.isArray(leads) && leads?.map((l:iLead) => (
+                    <Lead setLists={setLists} key={l.id} listId={id} id={l.id} name={l.name} status={l.status}/>
                 ))}
             </CollapsibleContent>
         </Collapsible>

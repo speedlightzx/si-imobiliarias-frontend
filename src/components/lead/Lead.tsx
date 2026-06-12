@@ -1,16 +1,21 @@
-import { iLead } from "../types/iLead";
+import { iLead } from "../../types/iLead";
 import LeadOptions from "./LeadOptions";
-import { Badge } from "./ui/badge";
+import { Badge } from "../ui/badge";
+import { Dispatch, SetStateAction } from "react";
+import { iList } from "@/types/iList";
 
 export default function Lead(
     { 
         id, 
         name, 
         status, 
-        listId 
+        listId,
+        setLists
     }: 
-    iLead &
-    { listId: number }
+    iLead & { 
+        listId: number,
+        setLists: Dispatch<SetStateAction<iList[]>>
+    }
 ) {
     const getBadgeColor = (status:string) => {
         if(status == 'Frio') return '#3730ff'
@@ -34,7 +39,8 @@ export default function Lead(
                 </Badge>
             </div>
             <div className="flex item-center self-center">
-                <LeadOptions 
+                <LeadOptions
+                setLists={setLists}
                 id={id}
                 name={name}
                 status={status}

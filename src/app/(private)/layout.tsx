@@ -5,7 +5,7 @@ import { cn } from "@/lib/utils";
 import { Toaster } from "sonner";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import AppSidebar from "@/components/AppSidebar";
-import FloatingChat from "@/components/FloatingChat";
+import FloatingChat from "@/components/chatbot/FloatingChat";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
 const geist = Geist({subsets:['latin'],variable:'--font-sans'});
