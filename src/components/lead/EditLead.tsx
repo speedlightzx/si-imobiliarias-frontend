@@ -94,7 +94,7 @@ export default function EditLead(
                         <Input name="name" placeholder={name} type="text"/>
                     </div>
                     <div className="form">
-                        <Label>Status do lead:</Label>
+                        <Label>Temperatura do lead:</Label>
                         <Select name="temperature">
                             <SelectTrigger>
                                 <SelectValue placeholder={temperature}/>

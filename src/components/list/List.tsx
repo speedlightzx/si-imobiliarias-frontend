@@ -34,7 +34,6 @@ export default function List(
     }
 
     const [isOpen, setIsOpen] = useState<boolean>(true)
-    console.log(color)
     return (
         <Collapsible
         open={isOpen}

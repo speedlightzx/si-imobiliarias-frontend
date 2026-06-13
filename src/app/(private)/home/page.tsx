@@ -51,7 +51,7 @@ export default function Home() {
             if (list.id === previousListId) return { ...list, leads: list.leads!.filter(l => l.id !== leadId) }
             
             //adiciona o lead na nova lista
-            if (list.id === newListId) return { ...list, leads: [...list.leads!, lead] }
+            if (list.id === newListId) return { ...list, leads: [...list.leads! || [], lead] }
             
             return list
             })

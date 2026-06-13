@@ -21,14 +21,15 @@
     $ docker compose up -d
     ```
 
-Após seguir esses passos a cima, os containers ficarão disponíveis nas seguintes URIs:
+Após seguir esses passos a cima, os containers ficarão disponíveis nas seguintes URLs:
 
 - Frontend: 
     - Local: `http://localhost:3001`
 
 ## 🗃️ Variáveis de ambiente:
 Crie um arquivo .env, e insira as seguintes variáveis de ambiente:
-    - NEXT_PUBLIC_API_URL=http://localhost:3001
+
+- NEXT_PUBLIC_API_URL=http://localhost:3000
 
 ## ❓ Como se integra com os outros serviços?
 O frontend se integra diretamente com todos os outros serviços, é ele quem consome o backend, permitindo realizar login, gerenciar leads, listas e interagir com o chatbot.

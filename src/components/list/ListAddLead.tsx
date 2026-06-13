@@ -115,7 +115,7 @@ export default function ListAddLead(
                                     <SelectItem value="Visita">Visita</SelectItem>
                                     <SelectItem value="Proposta">Proposta</SelectItem>
                                     <SelectItem value="Fechado">Fechado</SelectItem>
-                                    <SelectItem value="Lost">Perdido</SelectItem>
+                                    <SelectItem value="Perdido">Perdido</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>
