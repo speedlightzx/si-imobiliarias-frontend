@@ -22,6 +22,7 @@ export default function ListAddLead(
 
         const formData = new FormData(e.currentTarget)
         const name = formData.get('name')
+        const temperature = formData.get('temperature')
         const status = formData.get('status')
 
         try {
@@ -32,7 +33,8 @@ export default function ListAddLead(
             body: JSON.stringify({
                 name,
                 status,
-                listId
+                listId,
+                temperature
             })
         })
 
@@ -54,7 +56,8 @@ export default function ListAddLead(
                     leads:  [...l.leads || [], {
                         id: leadData.id,
                         name: name!.toString(),
-                        status: status!.toString()
+                        status: status!.toString(),
+                        temperature: temperature!.toString()
                     }]
                 }
             })
@@ -82,6 +85,22 @@ export default function ListAddLead(
                         <Input name="name" type="text"/>
                     </div>
                     <div className="form">
+                        <Label>Temperatura do lead:</Label>
+                        <Select required name="temperature">
+                            <SelectTrigger>
+                                <SelectValue placeholder={status}/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Alterar temperatura do lead</SelectLabel>
+                                    <SelectItem value="Frio">Frio</SelectItem>
+                                    <SelectItem value="Morno">Morno</SelectItem>
+                                    <SelectItem value="Quente">Quente</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="form">
                         <Label>Status do lead:</Label>
                         <Select required name="status">
                             <SelectTrigger>
@@ -90,9 +109,13 @@ export default function ListAddLead(
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectLabel>Alterar status do lead</SelectLabel>
-                                    <SelectItem value="Frio">Frio</SelectItem>
-                                    <SelectItem value="Morno">Morno</SelectItem>
-                                    <SelectItem value="Quente">Quente</SelectItem>
+                                    <SelectItem value="Novo">Novo</SelectItem>
+                                    <SelectItem value="Contato">Contato</SelectItem>
+                                    <SelectItem value="Qualificado">Qualificado</SelectItem>
+                                    <SelectItem value="Visita">Visita</SelectItem>
+                                    <SelectItem value="Proposta">Proposta</SelectItem>
+                                    <SelectItem value="Fechado">Fechado</SelectItem>
+                                    <SelectItem value="Lost">Perdido</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>

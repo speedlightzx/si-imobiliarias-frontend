@@ -8,6 +8,7 @@ import { Dispatch, FormEvent, ReactNode, SetStateAction, useState } from "react"
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select"
 import { iList } from "@/types/iList"
 import { toast } from "sonner"
+import { iLead } from "@/types/iLead"
 
 export default function EditLead(
     { 
@@ -15,12 +16,11 @@ export default function EditLead(
         name, 
         status,
         children,
+        temperature,
         setLists
-    }: 
-    {
-        id:number,
-        name:string,
-        status:string,
+    }:
+    
+    iLead & {
         children: ReactNode,
         setLists: Dispatch<SetStateAction<iList[]>>
     }
@@ -31,7 +31,9 @@ export default function EditLead(
 
         const formData = new FormData(e.currentTarget)
         const updatedName = formData.get('name') || undefined
+        const updatedTemperature = formData.get('temperature') || undefined
         const updatedStatus = formData.get('status') || undefined
+
 
         try {
             const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/leads/${id}`, {
@@ -40,7 +42,8 @@ export default function EditLead(
                 credentials: 'include',
                 body: JSON.stringify({
                     name: updatedName,
-                    status: updatedStatus
+                    status: updatedStatus,
+                    temperature: updatedTemperature
                 })
             })
 
@@ -62,6 +65,7 @@ export default function EditLead(
                                 ...lead,
                                 name: updatedName?.toString() || lead.name,
                                 status: updatedStatus?.toString() || lead.status,
+                                temperature: updatedTemperature?.toString() || lead.temperature,
                             }
                         })
                     }
@@ -91,6 +95,22 @@ export default function EditLead(
                     </div>
                     <div className="form">
                         <Label>Status do lead:</Label>
+                        <Select name="temperature">
+                            <SelectTrigger>
+                                <SelectValue placeholder={temperature}/>
+                            </SelectTrigger>
+                            <SelectContent>
+                                <SelectGroup>
+                                    <SelectLabel>Alterar temperatura do lead</SelectLabel>
+                                    <SelectItem value="Frio">Frio</SelectItem>
+                                    <SelectItem value="Morno">Morno</SelectItem>
+                                    <SelectItem value="Quente">Quente</SelectItem>
+                                </SelectGroup>
+                            </SelectContent>
+                        </Select>
+                    </div>
+                    <div className="form">
+                        <Label>Status do lead:</Label>
                         <Select name="status">
                             <SelectTrigger>
                                 <SelectValue placeholder={status}/>
@@ -98,9 +118,13 @@ export default function EditLead(
                             <SelectContent>
                                 <SelectGroup>
                                     <SelectLabel>Alterar status do lead</SelectLabel>
-                                    <SelectItem value="Frio">Frio</SelectItem>
-                                    <SelectItem value="Morno">Morno</SelectItem>
-                                    <SelectItem value="Quente">Quente</SelectItem>
+                                    <SelectItem value="Novo">Novo</SelectItem>
+                                    <SelectItem value="Contato">Contato</SelectItem>
+                                    <SelectItem value="Qualificado">Qualificado</SelectItem>
+                                    <SelectItem value="Visita">Visita</SelectItem>
+                                    <SelectItem value="Proposta">Proposta</SelectItem>
+                                    <SelectItem value="Fechado">Fechado</SelectItem>
+                                    <SelectItem value="Perdido">Perdido</SelectItem>
                                 </SelectGroup>
                             </SelectContent>
                         </Select>

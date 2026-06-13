@@ -60,7 +60,7 @@ export default function List(
             </div>
             <CollapsibleContent className="flex flex-col gap-y-3">
                 {Array.isArray(leads) && leads?.map((l:iLead) => (
-                    <Lead setLists={setLists} key={l.id} listId={id} id={l.id} name={l.name} status={l.status}/>
+                    <Lead temperature={l.temperature} setLists={setLists} key={l.id} listId={id} id={l.id} name={l.name} status={l.status}/>
                 ))}
             </CollapsibleContent>
         </Collapsible>

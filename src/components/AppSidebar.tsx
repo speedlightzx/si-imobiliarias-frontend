@@ -31,6 +31,8 @@ export default function AppSidebar() {
             <SidebarFooter>
                 <Button 
                 onClick={() => {
+                    //aqui simula um logout, apenas redirecionando para a pagina do login
+                    //também estou ciente de remover cookies e aplicar estratégias de logout
                     router.push('/')
                 }}
                 variant={'destructive'} 

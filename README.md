@@ -1,36 +1,60 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🖥️ Frontend em Next.js - SI
 
-## Getting Started
+## 🔧 Tecnologias usadas no projeto:
+- Next.js
+- Typescript
+- Shadcn UI
+- Docker e Docker Compose↓
+- Websocket: Socket.io
 
-First, run the development server:
+> ⚠️ **_Não é necessário nenhum requisito e dependência de sistema além do Docker e Docker Compose_**
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## ⚙️ Executando de forma local:
+
+1) Clone o repositório para sua máquina:
+    ```bash
+    $ git clone https://github.com/speedlightzx/si-imobiliarias-frontend
+    ```
+
+2) Suba todos os containers do Docker Compose:
+    ```bash
+    $ docker compose up -d
+    ```
+
+Após seguir esses passos a cima, os containers ficarão disponíveis nas seguintes URIs:
+
+- Frontend: 
+    - Local: `http://localhost:3001`
+
+## 🗃️ Variáveis de ambiente:
+Crie um arquivo .env, e insira as seguintes variáveis de ambiente:
+    - NEXT_PUBLIC_API_URL=http://localhost:3001
+
+## ❓ Como se integra com os outros serviços?
+O frontend se integra diretamente com todos os outros serviços, é ele quem consome o backend, permitindo realizar login, gerenciar leads, listas e interagir com o chatbot.
+
+## 📁 Rotas:
+
+### 🔓 Rotas públicas:
+
+```http
+    /register
 ```
+- Página para realizar o cadastro na aplicação. Se o cadastro for bem sucedido, o usuário será redirecionado para a página de login.
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+```http
+    /
+```
+- Página para realizar login na aplicação. Se o login for bem sucedido, o usuário será redirecionado para /home.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 🔐 Rotas privadas:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+> _Para poder acessar as rotas privadas basta fazer login na rota /auth/login que será setado um cookie de autenticação!_
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```http
+    /home
+```
+- Página inicial onde o usuário pode gerenciar suas listas, leads, e interagir com chatbot.
+---
